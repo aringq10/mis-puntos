@@ -1,0 +1,4 @@
+# file to be used with "konsole --tabs-from-file <path/to/this/file>"
+# docs: https://docs.kde.org/stable5/en/konsole/konsole/command-line-options.html
+
+title:Code;; workdir:~/code;; command:bash
