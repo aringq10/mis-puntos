@@ -9,32 +9,27 @@
   vim.keymap.set("n", "<Esc>", "<cmd>set nohls<CR>", { desc = "Turn off search highlight" })
   vim.keymap.set("n", "<leader>s", "<cmd>source $MYVIMRC<CR>", { desc = "Source neovim's config file" })
 
--- LSP
-  vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, { desc = "Go to definition" })
-
 -- Diagnostic
   vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float, { desc = "Show diagnostics" })
-  vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
 -- Toggle between syntax and marker foldmethods
   vim.keymap.set("n", "<leader>fm", function()
     if vim.opt.foldmethod:get() == "marker" then
-      vim.opt.foldmethod = "syntax"
-      print("Folding: syntax")
+      vim.opt.foldmethod = "expr"
+      print("Folding: expr")
     else
       vim.opt.foldmethod = "marker"
       print("Folding: marker")
     end
-  end, { desc = "Toggle between marker and syntax folding" })
+  end, { desc = "Toggle between marker and expr folding" })
 
+-- Fix a bug? with snippet jumping whenever I make a newline and press <Tab>
+  local luasnip = require("luasnip")
 
--- Autocommands
-  vim.api.nvim_create_autocmd('TextYankPost', {
-    desc = 'Highlight when yanking (copying) text',
-    group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
-    callback = function()
-      vim.hl.on_yank()
-    end,
-  })
-
-
+  vim.keymap.set({ "i", "s" }, "<Tab>", function()
+    if luasnip.expand_or_jumpable() then
+      luasnip.expand_or_jump()
+    else
+      return "\t"
+    end
+  end, { expr = true, silent = true })

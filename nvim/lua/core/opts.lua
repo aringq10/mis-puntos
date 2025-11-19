@@ -68,6 +68,8 @@
       local filename = vim.api.nvim_buf_get_name(0)
       local ext = filename:match("^.+%.([^.]+)$")
 
+      vim.o.expandtab   = true    -- Pressing Tab inserts spaces
+
       if ext and vim.tbl_contains(indent_2, ext) then
         vim.opt_local.shiftwidth  = 2
         vim.opt_local.tabstop     = 2
@@ -80,7 +82,6 @@
     end
   })
 
-  vim.o.expandtab   = true    -- Pressing Tab inserts spaces
   vim.o.breakindent = true    -- Keep indentation on wrapped lines
   vim.o.autoindent  = true
   vim.o.smartindent = true
@@ -100,9 +101,9 @@
 -- Font
   vim.g.have_nerd_font = false
 
--- Folding
-  vim.opt.foldmethod = "syntax"
-  vim.opt.foldenable = true
+-- Use folding provided by treesitter
+  vim.wo.foldmethod = 'expr'
+  vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
 
 -- Have nerdtree ignore certain files and directories.
   vim.g.NERDTreeIgnore = {

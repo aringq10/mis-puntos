@@ -1,3 +1,5 @@
+-- https://github.com/Saghen/blink.cmp
+
 return {
   { -- Autocompletion
     'saghen/blink.cmp',
@@ -53,6 +55,7 @@ return {
         -- <tab>/<s-tab>: move to right/left of your snippet expansion
         -- <c-space>: Open menu or open docs if already open
         -- <c-n>/<c-p> or <up>/<down>: Select next/previous item
+        -- <c-b>/<c-f>: Scroll docs up/down
         -- <c-e>: Hide menu
         -- <c-k>: Toggle signature help
         --
@@ -73,6 +76,7 @@ return {
         -- By default, you may press `<c-space>` to show the documentation.
         -- Optionally, set `auto_show = true` to show the documentation after a delay.
         documentation = { auto_show = false, auto_show_delay_ms = 500 },
+        keyword = { range = 'full' },
       },
 
       sources = {
@@ -80,6 +84,16 @@ return {
         providers = {
           lazydev = { module = 'lazydev.integrations.blink', score_offset = 100 },
         },
+      },
+
+      cmdline = {
+        -- Enable cmdline completion menu to show up by default
+        keymap = { preset = 'inherit' },
+        completion = { menu = { auto_show = true } },
+      },
+      term = {
+        -- Tried the terminal completion but didn't seem to work
+        enabled = false,
       },
 
       snippets = { preset = 'luasnip' },

@@ -1,5 +1,5 @@
 return {
-  -- colorschemes
+  -- Colorschemes
   {
     "folke/tokyonight.nvim",
     lazy = false,
@@ -15,13 +15,6 @@ return {
     lazy = false,
     opts = {
       exclude_groups = { 'CursorLine', 'CursorLineNr'},
-    }
-  },
-  {
-    "preservim/nerdtree",
-    lazy = false,
-    keys = {
-      { "<F3>", ":NERDTreeToggle<CR>", desc = "Toggle NERDTree" }
     }
   },
   ui = {
