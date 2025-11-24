@@ -99,11 +99,7 @@
   vim.o.incsearch  = true
 
 -- Font
-  vim.g.have_nerd_font = false
-
--- Use folding provided by treesitter
-  vim.wo.foldmethod = 'expr'
-  vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+  vim.g.have_nerd_font = true
 
 -- Have nerdtree ignore certain files and directories.
   vim.g.NERDTreeIgnore = {
