@@ -8,9 +8,9 @@
 --  }
 
 local autoCommands = {
-  folds = {
-    {"BufReadPost,FileReadPost", "*", "Open all folds on buffer open", "normal zR"}
-  },
+  -- folds = {
+  --   {"BufReadPost,FileReadPost", "*", "Open all folds on buffer open", "normal zR"}
+  -- },
   yank = {
     {
       "TextYankPost",
