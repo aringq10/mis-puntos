@@ -16,7 +16,7 @@
 -- Misc.
   vim.o.mouse      = 'a'     -- Enable mouse mode for [a]ll modes
   vim.o.number     = true    -- Line numbers
-  -- vim.o.relativenumber = true
+--vim.o.relativenumber = true
   vim.o.cursorline = true    -- Highlight line that cursor is on
   vim.o.showcmd    = true    -- Show command in bottom right
   vim.o.wrap       = false
@@ -25,7 +25,7 @@
   vim.o.timeoutlen = 300     -- Decrease mapped sequence wait time
   vim.o.splitright = true    -- Vsplits open on right
   vim.o.splitbelow = true    -- Hsplits open on bottom
-  vim.o.scrolloff  = 10      -- Minimal number of screen lines to keep above and below the cursor.
+--vim.o.scrolloff  = 10      -- Minimal number of screen lines to keep above and below the cursor.
   vim.o.showmode   = false
 
 -- Sets how neovim will display certain whitespace characters in the editor.
@@ -61,6 +61,10 @@
   local indent_2 = {
     "lua",
     "html",
+    "js",
+    "jsx",
+    "md",
+    "yml"
   }
 
   vim.api.nvim_create_autocmd({"BufReadPost", "BufNewFile"}, {
