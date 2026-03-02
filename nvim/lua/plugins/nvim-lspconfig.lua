@@ -1,7 +1,5 @@
 -- https://github.com/neovim/nvim-lspconfig
 
-local myservers = require("config.lsp_servers")
-
 return {
   {
     -- Main LSP Configuration
@@ -198,7 +196,8 @@ return {
       --  - capabilities (table): Override fields in capabilities. Can be used to disable certain LSP features.
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
-      local servers = myservers
+
+      local servers = require("config.lsp_servers")
 
       -- Ensure the servers and tools above are installed
       --

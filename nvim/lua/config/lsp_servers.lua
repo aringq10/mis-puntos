@@ -1,12 +1,11 @@
+
 return {
   clangd = {},
   gopls = {},
   pyright = {},
   html = {},
   cssls = {},
-  jdtls = {
-    cmd = { "jdtls", "-data", vim.fn.expand("~/.local/share/nvim/jdtls-workspace") },
-  },
+  jdtls = {},
   -- rust_analyzer = {},
   -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
   --
