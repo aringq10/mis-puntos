@@ -1,0 +1,10 @@
+layout splits
+cd ~/code/uni-hw/
+launch
+launch --location=vsplit
+launch --location=hsplit
+
+new_tab BTOP
+cd ~
+layout splits
+launch btop
