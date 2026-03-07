@@ -8,7 +8,6 @@ return {
       transparent = vim.g.transparent_enabled
     },
   },
-  { "morhetz/gruvbox" },
   -- Other
   {
     "xiyaowong/transparent.nvim",
