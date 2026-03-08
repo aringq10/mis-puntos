@@ -7,10 +7,7 @@
   vim.keymap.set("n", "o", "o<Esc>", { desc = "Insert line below cursor" })
   vim.keymap.set("n", "O", "O<Esc>", { desc = "Insert line above cursor" })
   vim.keymap.set("n", "<Esc>", "<cmd>set nohls<CR>", { desc = "Turn off search highlight" })
-  vim.keymap.set("n", "<leader>s", "<cmd>source $MYVIMRC<CR>", { desc = "Source neovim's config file" })
-
--- Diagnostic
-  vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float, { desc = "Show diagnostics" })
+  vim.keymap.set("n", "<leader>so", "<cmd>source $MYVIMRC<CR>", { desc = "Source neovim's config file" })
 
 -- Toggle between syntax and marker foldmethods
   vim.keymap.set("n", "<leader>fm", function()

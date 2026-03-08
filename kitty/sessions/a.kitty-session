@@ -1,8 +1,8 @@
 layout splits
 cd ~/code/uni-hw/
 launch
-launch --location=vsplit
-launch --location=hsplit
+launch --location=vsplit --cwd=~/.dots/
+launch --location=hsplit --cwd=~/.local/share/
 
 new_tab BTOP
 cd ~
