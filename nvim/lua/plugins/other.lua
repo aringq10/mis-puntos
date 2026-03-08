@@ -6,17 +6,9 @@ return {
       require('mini.pairs').setup()
       require('mini.surround').setup()
       require('mini.notify').setup() 
-      local statusline = require 'mini.statusline'
-      -- set use_icons to true if you have a Nerd Font
-      statusline.setup { use_icons = vim.g.have_nerd_font }
-
-      -- You can configure sections in the statusline by overriding their
-      -- default behavior. For example, here we set the section for
-      -- cursor location to LINE:COLUMN
-      ---@diagnostic disable-next-line: duplicate-set-field
-      statusline.section_location = function()
-        return '%2l:%-2v'
-      end
+      require('mini.statusline').setup({
+        use_icons = vim.g.have_nerd_font
+      })
     end,
   },
   {
@@ -48,5 +40,22 @@ return {
         desc = "Buffer Local Keymaps (which-key)",
       },
     },
+  },
+  {
+    "folke/todo-comments.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    opts = {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+    }
+  },
+  {
+    'numToStr/Comment.nvim',
+    opts = {},
+    config = function ()
+      local ft = require('Comment.ft')
+      ft.css = {'//%s', '/*%s*/'}
+    end
   },
 }

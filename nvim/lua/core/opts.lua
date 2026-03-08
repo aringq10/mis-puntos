@@ -72,17 +72,16 @@
       local filename = vim.api.nvim_buf_get_name(0)
       local ext = filename:match("^.+%.([^.]+)$")
 
-      vim.o.expandtab   = true    -- Pressing Tab inserts spaces
+      vim.o.expandtab = true -- Pressing Tab inserts spaces
+      local indent = 4
 
       if ext and vim.tbl_contains(indent_2, ext) then
-        vim.opt_local.shiftwidth  = 2
-        vim.opt_local.tabstop     = 2
-        vim.opt_local.softtabstop = 2
-      else
-        vim.opt_local.shiftwidth  = 4    -- Indentation in space chars
-        vim.opt_local.tabstop     = 4    -- Tab is equal to 4 spaces
-        vim.opt_local.softtabstop = 4    -- Backspace deletes 4 spaces
+        indent = 2
       end
+
+      vim.opt_local.shiftwidth  = indent
+      vim.opt_local.tabstop     = indent
+      vim.opt_local.softtabstop = indent
     end
   })
 

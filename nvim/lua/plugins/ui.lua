@@ -1,13 +1,4 @@
 return {
-  -- Colorschemes
-  {
-    "folke/tokyonight.nvim",
-    lazy = false,
-    priority = 1000,
-    opts = {
-      transparent = vim.g.transparent_enabled
-    },
-  },
   -- Other
   {
     "xiyaowong/transparent.nvim",
