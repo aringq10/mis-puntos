@@ -105,21 +105,6 @@
 -- Font
   vim.g.have_nerd_font = true
 
--- Have nerdtree ignore certain files and directories.
-  vim.g.NERDTreeIgnore = {
-    [[\.git$]],
-    [[\.jpg$]],
-    [[\.mp4$]],
-    [[\.ogg$]],
-    [[\.iso$]],
-    [[\.pdf$]],
-    [[\.pyc$]],
-    [[\.odt$]],
-    [[\.png$]],
-    [[\.gif$]],
-    [[\.db$]],
-  }
-
 -- Folding
 vim.o.foldcolumn = '1'
 vim.o.foldlevel = 99

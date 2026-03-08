@@ -1,11 +1,27 @@
+-- Syntax highlighting, indentation, folding
+
 return {
-  { -- Highlight, edit, and navigate code
+  {
+    -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
     main = 'nvim-treesitter.configs', -- Sets main module to use for opts
     -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
     opts = {
-      ensure_installed = { 'bash', 'c', 'diff', 'html', 'jinja', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' },
+      ensure_installed = {
+        'bash',
+        'c',
+        'diff',
+        'html',
+        'jinja',
+        'lua',
+        'luadoc',
+        'markdown',
+        'markdown_inline',
+        'query',
+        'vim',
+        'vimdoc'
+      },
       -- Autoinstall languages that are not installed
       auto_install = true,
       highlight = {
@@ -16,13 +32,16 @@ return {
         additional_vim_regex_highlighting = { 'ruby' },
       },
       indent = { enable = true, disable = { 'ruby' } },
-    },
-    -- There are additional nvim-treesitter modules that you can use to interact
-    -- with nvim-treesitter. You should go explore a few and see what interests you:
-    --
-    --    - Incremental selection: Included, see `:help nvim-treesitter-incremental-selection-mod`
-    --    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
-    --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
+      incremental_selection = {
+        enable = true,
+        keymaps = {
+          init_selection = "gnn",
+          node_incremental = "grn",
+          scope_incremental = "grc",
+          node_decremental = "grm",
+        },
+      },
+    }
   },
   {
     "nvim-treesitter/nvim-treesitter-textobjects",
@@ -39,8 +58,6 @@ return {
       -- vim.g.no_go_maps = true
     end,
     config = function()
-      -- put your config here
-      -- keymaps
       -- You can use the capture groups defined in `textobjects.scm`
       vim.keymap.set({ "x", "o" }, "af", function()
         require "nvim-treesitter-textobjects.select".select_textobject("@function.outer", "textobjects")
@@ -63,5 +80,33 @@ return {
   {
     "nvim-treesitter/nvim-treesitter-context",
     opts = {}
+  },
+  { -- complete/rename html tags
+    "windwp/nvim-ts-autotag",
+    opts = {},
+  },
+  { -- folding
+    "kevinhwang91/nvim-ufo",
+    dependencies = {
+      "kevinhwang91/promise-async"
+    },
+    opts = {}
+  },
+  {
+    'numToStr/Comment.nvim',
+    opts = {},
+    config = function ()
+      local ft = require('Comment.ft')
+      ft.css = {'//%s', '/*%s*/'}
+    end
+  },
+  {
+    "folke/todo-comments.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    opts = {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+    }
   }
 }
