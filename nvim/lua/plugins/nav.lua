@@ -46,6 +46,7 @@ return {
       vim.keymap.set('n', '<leader>/', function()
         -- You can pass additional configuration to Telescope to change the theme, layout, etc.
         builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
+          preview = false
         })
       end, { desc = '[/] Fuzzily search in current buffer' })
 
@@ -64,4 +65,28 @@ return {
       end, { desc = '[S]earch [N]eovim files' })
     end,
   },
+  { -- File Explorer
+    "mikavilpas/yazi.nvim",
+    version = "*", -- use the latest stable version
+    event = "VeryLazy",
+    dependencies = {
+      { "nvim-lua/plenary.nvim", lazy = true },
+    },
+    keys = {
+      {
+        mode = { "n", "v" },
+        "<F3>",
+        "<cmd>Yazi<cr>",
+        desc = "Open yazi",
+      },
+    },
+    ---@type YaziConfig | {}
+    opts = {
+      open_for_directories = false,
+      open_multiple_tabs = true,
+      keymaps = {
+        show_help = "<f1>",
+      },
+    },
+  }
 }

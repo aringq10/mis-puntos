@@ -33,18 +33,13 @@ return {
     --- @module 'blink.cmp'
     --- @type blink.cmp.Config
     opts = {
-      keymap = {
-        -- See :h blink-cmp-config-keymap for presets and
-        -- defining your own keymap
-        preset = 'default',
+      -- :h blink-cmp-config-keymap for presets and defining keymaps
+      keymap = { preset = 'default', },
+      -- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:
+      --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
 
-        -- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:
-        --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
-      },
-
-      -- see :h blink-cmp-config-<name> for options, where name is appearance, sources...
+      -- see :h blink-cmp-config-<name> for options, where <name>: appearance, sources...
       appearance = { nerd_font_variant = 'mono' },
-
       completion = {
         documentation = {
           auto_show = false,
@@ -54,26 +49,19 @@ return {
         },
         keyword = { range = 'full' },
       },
-
       sources = {
         default = { 'lazydev', 'lsp', 'path', 'snippets' },
         providers = {
           lazydev = { module = 'lazydev.integrations.blink', score_offset = 100 },
         },
       },
-
       cmdline = {
         keymap = { preset = 'inherit' },
         completion = { menu = { auto_show = true } },
       },
-      -- Tried the terminal completion but didn't seem to work
-      term = { enabled = false },
-
+      term = { enabled = false }, -- Tried the terminal completion but didn't seem to work
       snippets = { preset = 'luasnip' },
-
-      -- See :h blink-cmp-config-fuzzy for more information
       fuzzy = { implementation = "prefer_rust_with_warning" },
-
       signature = { enabled = true },
     },
   },

@@ -2,11 +2,9 @@
 
 return {
   {
-    -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
     main = 'nvim-treesitter.configs', -- Sets main module to use for opts
-    -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
     opts = {
       ensure_installed = {
         'bash',
@@ -22,7 +20,6 @@ return {
         'vim',
         'vimdoc'
       },
-      -- Autoinstall languages that are not installed
       auto_install = true,
       highlight = {
         enable = true,
@@ -36,9 +33,9 @@ return {
         enable = true,
         keymaps = {
           init_selection = "gnn",
-          node_incremental = "grn",
-          scope_incremental = "grc",
-          node_decremental = "grm",
+          node_incremental = "gni",
+          scope_incremental = "gns",
+          node_decremental = "gnd",
         },
       },
     }
