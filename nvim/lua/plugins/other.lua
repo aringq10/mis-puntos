@@ -36,17 +36,25 @@ return {
         { ']', group = 'Next', mode = { 'n' } },
         { '[', group = 'Previous', mode = { 'n' } },
         { '<leader>w', group = '[W]indow Actions', mode = { 'n' } },
+        { '<leader>k', group = 'Which [K]ey', mode = { 'n' } },
         { '<leader><Tab>', group = 'Tab Actions', mode = { 'n' } },
       },
     },
     keys = {
       {
-        "<leader>?",
+        "<leader>kl",
         function()
           require("which-key").show({ global = false })
         end,
-        desc = "Buffer Local Keymaps (which-key)",
+        desc = "[K]eymaps for [L]ocal Buffer (which-key)",
       },
+      {
+        "<leader>kg",
+        function()
+          require("which-key").show({ global = true })
+        end,
+        desc = "[K]eymaps [G]lobal (which-key)",
+      }
     },
   },
   {

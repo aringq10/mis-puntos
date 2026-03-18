@@ -75,9 +75,9 @@ return {
     keys = {
       {
         mode = { "n", "v" },
-        "<F3>",
+        "<leader>e",
         "<cmd>Yazi<cr>",
-        desc = "Open yazi",
+        desc = "File Explorer",
       },
     },
     ---@type YaziConfig | {}

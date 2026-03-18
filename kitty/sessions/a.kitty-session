@@ -1,10 +1,11 @@
-layout splits
-cd ~/code/uni-hw/
-launch
-launch --location=vsplit --cwd=~/.dots/
-launch --location=hsplit --cwd=~/.local/share/
+new_tab HW
+launch --cwd=~/code/uni-hw/
+
+new_tab LOCSHARE
+launch --cwd=~/.local/share/
+
+new_tab DOTS
+launch --cwd=~/.dots/
 
 new_tab BTOP
-cd ~
-layout splits
 launch btop

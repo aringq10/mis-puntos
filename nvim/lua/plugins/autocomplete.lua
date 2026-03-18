@@ -41,13 +41,9 @@ return {
       -- see :h blink-cmp-config-<name> for options, where <name>: appearance, sources...
       appearance = { nerd_font_variant = 'mono' },
       completion = {
-        documentation = {
-          auto_show = false,
-          auto_show_delay_ms = 500,
-          treesitter_highlighting = true,
-          window = { border = "rounded" }
-        },
+        documentation = { window = { border = "rounded" } },
         keyword = { range = 'full' },
+        ghost_text = { enabled = false },
       },
       sources = {
         default = { 'lazydev', 'lsp', 'path', 'snippets' },
@@ -57,7 +53,10 @@ return {
       },
       cmdline = {
         keymap = { preset = 'inherit' },
-        completion = { menu = { auto_show = true } },
+        completion = {
+          ghost_text = { enabled = false },
+          menu = { auto_show = true }
+        },
       },
       term = { enabled = false }, -- Tried the terminal completion but didn't seem to work
       snippets = { preset = 'luasnip' },
