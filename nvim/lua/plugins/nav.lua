@@ -69,6 +69,7 @@ return {
     "mikavilpas/yazi.nvim",
     version = "*", -- use the latest stable version
     event = "VeryLazy",
+    enabled=false,
     dependencies = {
       { "nvim-lua/plenary.nvim", lazy = true },
     },
@@ -88,5 +89,23 @@ return {
         show_help = "<f1>",
       },
     },
-  }
+  },
+  {
+    "nvim-neo-tree/neo-tree.nvim",
+    branch = "v3.x",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "MunifTanjim/nui.nvim",
+      "nvim-tree/nvim-web-devicons", -- optional, but recommended
+    },
+    lazy = false, -- neo-tree will lazily load itself
+    keys = {
+      {
+        mode="n",
+        "<leader>e",
+        "<cmd>Neotree toggle=true<CR>",
+        desc = "Toggle Neotree",
+      }
+    }
+  },
 }
