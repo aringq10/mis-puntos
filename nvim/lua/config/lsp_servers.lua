@@ -9,6 +9,7 @@ return {
   jdtls = {},
   ts_ls = {},
   lua_ls = {
+    ---@type lspconfig.settings.lua_ls
     settings = {
       Lua = {
         completion = {

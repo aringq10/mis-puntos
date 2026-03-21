@@ -101,9 +101,6 @@
   vim.o.hlsearch   = true
   vim.o.incsearch  = true
 
--- Font
-  vim.g.have_nerd_font = true
-
 -- Folding
 vim.o.foldcolumn = '1'
 vim.o.foldlevel = 99
