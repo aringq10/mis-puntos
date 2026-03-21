@@ -9,14 +9,16 @@
 -- /lua/plugins/ - .lua files for plugins
 
 
--- Set custom leader key
+-- Set global vars
   vim.g.mapleader      = '\\'
   vim.g.maplocalleader = '\\'
+  vim.g.have_nerd_font = true
 
-require("config/lazy")
 
-require("core/keymaps")
+require("config.lazy")
 
-require("core/opts")
+require("core.keymaps")
 
-require("core/autocommands")
+require("core.opts")
+
+require("core.autocmds")
