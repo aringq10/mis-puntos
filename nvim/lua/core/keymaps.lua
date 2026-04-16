@@ -6,11 +6,20 @@ local map = vim.keymap.set
 
 -- Misc.
   map("t", "<Esc>", [[<C-\><C-n>]], { desc = "Exit terminal mode" })
+  map("n", "<Esc>", "<cmd>set nohls<CR>", { desc = "Turn off search highlight" })
   map("n", "o", "o<Esc>", { desc = "Insert line below cursor" })
   map("n", "O", "O<Esc>", { desc = "Insert line above cursor" })
-  map("n", "<Esc>", "<cmd>set nohls<CR>", { desc = "Turn off search highlight" })
+  map("n", "<leader>r", function ()
+    vim.wo.wrap = not vim.wo.wrap
+    vim.wo.linebreak = vim.wo.wrap
+  end, { desc = "Toggle wrap" })
+  map("n", "<leader>l", "<cmd>Lazy<CR>", { desc = "Open lazy nvim" })
+
+-- Movement in wrap mode
   map({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { desc = "Down", expr = true, silent = true })
   map({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { desc = "Up", expr = true, silent = true })
+  map({ "n", "x" }, "0", function() return vim.wo.wrap and (vim.v.count == 0 and 'g0' or '0') or '0' end, { desc = "Start", expr = true, silent = true })
+  map({ "n", "x" }, "$", function() return vim.wo.wrap and (vim.v.count == 0 and 'g$' or '$') or '$' end, { desc = "End", expr = true, silent = true })
 
 -- Window and Tab navigation
   map("n", "<C-h>", "<C-w>h", { desc = "Go to Left Window", remap = true })
@@ -44,13 +53,13 @@ local map = vim.keymap.set
   map("n", "<leader><tab>d", "<cmd>tabclose<cr>", { desc = "Close Tab" })
 
 -- Move Lines
-  map("n", "<A-j>", "<cmd>execute 'move .+' . v:count1<cr>==", { desc = "Move Line Down" })
-  map("n", "<A-k>", "<cmd>execute 'move .-' . (v:count1 + 1)<cr>==", { desc = "Move Line Up" })
-  map("i", "<A-j>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move Line Down" })
-  map("i", "<A-k>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move Line Up" })
-  map("v", "<A-j>", ":<C-u>execute \"'<,'>move '>+\" . v:count1<cr>gv=gv", { desc = "Move Line Down" })
-  map("v", "<A-k>", ":<C-u>execute \"'<,'>move '<-\" . (v:count1 + 1)<cr>gv=gv", { desc = "Move Line Up" })
-
+  -- map("n", "<A-j>", "<cmd>execute 'move .+' . v:count1<cr>==", { desc = "Move Line Down" })
+  -- map("n", "<A-k>", "<cmd>execute 'move .-' . (v:count1 + 1)<cr>==", { desc = "Move Line Up" })
+  -- map("i", "<A-j>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move Line Down" })
+  -- map("i", "<A-k>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move Line Up" })
+  -- map("v", "<A-j>", ":<C-u>execute \"'<,'>move '>+\" . v:count1<cr>gv=gv", { desc = "Move Line Down" })
+  -- map("v", "<A-k>", ":<C-u>execute \"'<,'>move '<-\" . (v:count1 + 1)<cr>gv=gv", { desc = "Move Line Up" })
+  --
 -- Diagnostic
   local diagnostic_goto = function(next, severity)
     return function()
@@ -71,7 +80,7 @@ local map = vim.keymap.set
   map("n", "]h", diagnostic_goto(true, "HINT"), { desc = "Next Hint" })
   map("n", "[h", diagnostic_goto(false, "HINT"), { desc = "Prev Hint" })
 
--- highlights under cursor
+-- Treesitter
   map("n", "<leader>tsp", vim.show_pos, { desc = "Inspect Pos" })
   -- "a" - toggle display of anonymous nodes, "I" - node source lang,
   -- "o" - query editor, <Enter> - jump to node, folding also works.

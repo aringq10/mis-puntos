@@ -36,7 +36,7 @@
 -- UI
   vim.o.termguicolors = true    -- Use 24 bit colors
   vim.o.background    = "dark"
-  vim.cmd("colorscheme tokyonight-moon")
+  vim.cmd("colorscheme " .. (vim.g.colorscheme or "default"))
 
 -- Wildmenu
   vim.o.wildmenu       = true
@@ -100,9 +100,3 @@
   vim.o.smartcase  = true
   vim.o.hlsearch   = true
   vim.o.incsearch  = true
-
--- Folding
-vim.o.foldcolumn = '1'
-vim.o.foldlevel = 99
-vim.o.foldlevelstart = 99
-vim.o.foldenable = true

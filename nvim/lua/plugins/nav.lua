@@ -69,16 +69,16 @@ return {
     "mikavilpas/yazi.nvim",
     version = "*", -- use the latest stable version
     event = "VeryLazy",
-    enabled=false,
+    enabled = true,
     dependencies = {
       { "nvim-lua/plenary.nvim", lazy = true },
     },
     keys = {
       {
         mode = { "n", "v" },
-        "<leader>e",
+        "<leader>y",
         "<cmd>Yazi<cr>",
-        desc = "File Explorer",
+        desc = "Open Yazi",
       },
     },
     ---@type YaziConfig | {}

@@ -1,5 +1,5 @@
-new_tab HW
-launch --cwd=~/code/uni-hw/
+new_tab NEWS
+launch --cwd=~/code/news-app/
 
 new_tab LOCSHARE
 launch --cwd=~/.local/share/

@@ -14,7 +14,13 @@ return {
   {
     'MeanderingProgrammer/render-markdown.nvim',
     dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-mini/mini.nvim' },
-    opts = {},
+    opts = {
+      completions = { lsp = { enabled = true } },
+    },
+    keys = {
+      { "<leader>mt", "<cmd>RenderMarkdown toggle<CR>", desc = "Toggle RenderMarkdown" },
+      { "<leader>mp", "<cmd>RenderMarkdown preview<CR>", desc = "Preview RenderMarkdown" },
+    },
   },
   {
     "folke/which-key.nvim",

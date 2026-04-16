@@ -8,6 +8,7 @@ return {
   cssls = {},
   jdtls = {},
   ts_ls = {},
+  intelephense = {}, -- php
   lua_ls = {
     ---@type lspconfig.settings.lua_ls
     settings = {
