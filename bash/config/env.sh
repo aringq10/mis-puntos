@@ -23,3 +23,7 @@ path_add() { case ":$PATH:" in *":$1:"*) ;; *) export PATH="$1:$PATH" ;; esac; }
 
 path_add "$HOME/.local/bin"
 path_add "$HOME/.cargo/bin"
+path_add "/bin"
+path_add "/sbin"
+path_add "/usr/bin"
+path_add "/usr/sbin"
