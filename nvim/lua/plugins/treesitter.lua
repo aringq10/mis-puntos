@@ -6,33 +6,7 @@ return {
     lazy = false,
     build = ':TSUpdate',
     config = function()
-      local ts = require('nvim-treesitter')
-
-      vim.api.nvim_create_autocmd("FileType", {
-        callback = function()
-          pcall(vim.treesitter.start)
-        end,
-      })
-
-      local function show_in_buffer(title, items)
-        table.sort(items)
-        vim.cmd('vnew')
-        local buf = vim.api.nvim_get_current_buf()
-        vim.bo[buf].buftype = 'nofile'
-        vim.bo[buf].bufhidden = 'wipe'
-        vim.bo[buf].swapfile = false
-        vim.api.nvim_buf_set_name(buf, title)
-        vim.api.nvim_buf_set_lines(buf, 0, -1, false, items)
-        vim.bo[buf].modifiable = false
-      end
-
-      vim.api.nvim_create_user_command("TSListInstalled", function()
-        show_in_buffer("TS Installed", ts.get_installed())
-      end, { desc = "List installed treesitter parsers" })
-
-      vim.api.nvim_create_user_command("TSListAvailable", function()
-        show_in_buffer("TS Available", ts.get_available())
-      end, { desc = "List all available treesitter parsers" })
+      require('utils.treesitter').setup()
     end,
   },
   {
@@ -50,23 +24,7 @@ return {
       -- vim.g.no_go_maps = true
     end,
     config = function()
-      -- You can use the capture groups defined in `textobjects.scm`
-      vim.keymap.set({ "x", "o" }, "af", function()
-        require "nvim-treesitter-textobjects.select".select_textobject("@function.outer", "textobjects")
-      end)
-      vim.keymap.set({ "x", "o" }, "if", function()
-        require "nvim-treesitter-textobjects.select".select_textobject("@function.inner", "textobjects")
-      end)
-      vim.keymap.set({ "x", "o" }, "ac", function()
-        require "nvim-treesitter-textobjects.select".select_textobject("@class.outer", "textobjects")
-      end)
-      vim.keymap.set({ "x", "o" }, "ic", function()
-        require "nvim-treesitter-textobjects.select".select_textobject("@class.inner", "textobjects")
-      end)
-      -- You can also use captures from other query groups like `locals.scm`
-      vim.keymap.set({ "x", "o" }, "as", function()
-        require "nvim-treesitter-textobjects.select".select_textobject("@local.scope", "locals")
-      end)
+      require('utils.treesitter_textobjects').setup()
     end,
   },
   {
