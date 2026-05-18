@@ -1,16 +1,4 @@
 return {
-  { -- Collection of various small independent plugins/modules
-    'nvim-mini/mini.nvim',
-    config = function()
-      require('mini.ai').setup({ n_lines = 500 })
-      require('mini.pairs').setup()
-      require('mini.surround').setup()
-      require('mini.notify').setup()
-      require('mini.statusline').setup({
-        use_icons = vim.g.have_nerd_font
-      })
-    end,
-  },
   {
     'MeanderingProgrammer/render-markdown.nvim',
     dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-mini/mini.nvim' },

@@ -65,47 +65,4 @@ return {
       end, { desc = '[S]earch [N]eovim files' })
     end,
   },
-  { -- File Explorer
-    "mikavilpas/yazi.nvim",
-    version = "*", -- use the latest stable version
-    event = "VeryLazy",
-    enabled = true,
-    dependencies = {
-      { "nvim-lua/plenary.nvim", lazy = true },
-    },
-    keys = {
-      {
-        mode = { "n", "v" },
-        "<leader>y",
-        "<cmd>Yazi<cr>",
-        desc = "Open Yazi",
-      },
-    },
-    ---@type YaziConfig | {}
-    opts = {
-      open_for_directories = false,
-      open_multiple_tabs = true,
-      keymaps = {
-        show_help = "<f1>",
-      },
-    },
-  },
-  {
-    "nvim-neo-tree/neo-tree.nvim",
-    branch = "v3.x",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "MunifTanjim/nui.nvim",
-      "nvim-tree/nvim-web-devicons", -- optional, but recommended
-    },
-    lazy = false, -- neo-tree will lazily load itself
-    keys = {
-      {
-        mode="n",
-        "<leader>e",
-        "<cmd>Neotree toggle=true<CR>",
-        desc = "Toggle Neotree",
-      }
-    }
-  },
 }

@@ -1,5 +1,4 @@
 return {
-  -- Other
   {
     "xiyaowong/transparent.nvim",
     lazy = false,
