@@ -6,14 +6,14 @@ local map = vim.keymap.set
 
 -- Misc.
   map("t", "<Esc>", [[<C-\><C-n>]], { desc = "Exit terminal mode" })
-  map("n", "<Esc>", "<cmd>set nohls<CR>", { desc = "Turn off search highlight" })
+  map('n', '<Esc>', '<cmd>noh<CR>',{ silent = true, desc = "Turn off search highlight" })
   map("n", "o", "o<Esc>", { desc = "Insert line below cursor" })
   map("n", "O", "O<Esc>", { desc = "Insert line above cursor" })
   map("n", "<leader>r", function ()
     vim.wo.wrap = not vim.wo.wrap
     vim.wo.linebreak = vim.wo.wrap
   end, { desc = "Toggle wrap" })
-  map("n", "<leader>l", "<cmd>Lazy<CR>", { desc = "Open lazy nvim" })
+  map("n", "<leader>l", "<cmd>Lazy<CR>", { desc = "Open lazy.nvim" })
 
 -- Movement in wrap mode
   map({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { desc = "Down", expr = true, silent = true })
@@ -22,24 +22,24 @@ local map = vim.keymap.set
   map({ "n", "x" }, "$", function() return vim.wo.wrap and (vim.v.count == 0 and 'g$' or '$') or '$' end, { desc = "End", expr = true, silent = true })
 
 -- Window and Tab navigation
-  map("n", "<C-h>", "<C-w>h", { desc = "Go to Left Window", remap = true })
-  map("n", "<C-j>", "<C-w>j", { desc = "Go to Lower Window", remap = true })
-  map("n", "<C-k>", "<C-w>k", { desc = "Go to Upper Window", remap = true })
-  map("n", "<C-l>", "<C-w>l", { desc = "Go to Right Window", remap = true })
-  map("n", "<C-Up>", "<cmd>resize +2<cr>", { desc = "Increase Window Height" })
-  map("n", "<C-Down>", "<cmd>resize -2<cr>", { desc = "Decrease Window Height" })
-  map("n", "<C-Left>", "<cmd>vertical resize -2<cr>", { desc = "Decrease Window Width" })
-  map("n", "<C-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increase Window Width" })
-  map("n", "<leader>wh", "<C-w>H", { desc = "Move Window Left", remap = true })
-  map("n", "<leader>wj", "<C-w>J", { desc = "Move Window Down", remap = true })
-  map("n", "<leader>wk", "<C-w>K", { desc = "Move Window Up", remap = true })
-  map("n", "<leader>wl", "<C-w>L", { desc = "Move Window Right", remap = true })
-  map("n", "<leader>ws", "<C-W>s", { desc = "Split Window Horizontally", remap = true })
-  map("n", "<leader>wv", "<C-W>v", { desc = "Split Window Vertically", remap = true })
+  map("n", "<C-h>", "<C-w>h", { desc = "Go to left window", remap = true })
+  map("n", "<C-j>", "<C-w>j", { desc = "Go to lower window", remap = true })
+  map("n", "<C-k>", "<C-w>k", { desc = "Go to upper window", remap = true })
+  map("n", "<C-l>", "<C-w>l", { desc = "Go to right window", remap = true })
+  map("n", "<C-Up>", "<cmd>resize +2<cr>", { desc = "Increase window height" })
+  map("n", "<C-Down>", "<cmd>resize -2<cr>", { desc = "Decrease window height" })
+  map("n", "<C-Left>", "<cmd>vertical resize -2<cr>", { desc = "Decrease window width" })
+  map("n", "<C-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increase window width" })
+  map("n", "<leader>wh", "<C-w>H", { desc = "Move window left", remap = true })
+  map("n", "<leader>wj", "<C-w>J", { desc = "Move window down", remap = true })
+  map("n", "<leader>wk", "<C-w>K", { desc = "Move window up", remap = true })
+  map("n", "<leader>wl", "<C-w>L", { desc = "Move window right", remap = true })
+  map("n", "<leader>ws", "<C-W>s", { desc = "Split window horizontally", remap = true })
+  map("n", "<leader>wv", "<C-W>v", { desc = "Split window vertically", remap = true })
   map("n", "<leader>wt", "<C-W>T", { desc = "Move window to new tab", remap = true })
-  map("n", "<leader>wd", "<C-W>q", { desc = "Delete Window", remap = true })
+  map("n", "<leader>wd", "<C-W>q", { desc = "Delete window", remap = true })
+  map("n", "<leader>wo", "<C-W>o", { desc = "Delete all other windows", remap = true })
 
-  map("n", "t", "<cmd>tabnext<cr>", { desc = "Next Tab" })
   map("n", "t", function()
     local count = vim.v.count
     if count > 0 then
@@ -47,10 +47,11 @@ local map = vim.keymap.set
     else
       vim.cmd("tabnext")
     end
-  end, { desc = "Next Tab" })
-  map("n", "T", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
-  map("n", "<leader><tab><tab>", "<cmd>tabnew<cr>", { desc = "New Tab" })
-  map("n", "<leader><tab>d", "<cmd>tabclose<cr>", { desc = "Close Tab" })
+  end, { desc = "Next tab" })
+  map("n", "T", "<cmd>tabprevious<cr>", { desc = "Previous tab" })
+  map("n", "<leader><Tab><Tab>", "<cmd>tabnew<cr>", { desc = "New tab" })
+  map("n", "<leader><Tab>c", "<cmd>tabclose<cr>", { desc = "Close tab" })
+  map("n", "<leader><Tab>o", "<cmd>tabclose<cr>", { desc = "Close all other tabs" })
 
 -- Move Lines
   -- map("n", "<A-j>", "<cmd>execute 'move .+' . v:count1<cr>==", { desc = "Move Line Down" })

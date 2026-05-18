@@ -63,6 +63,8 @@
     "html",
     "js",
     "jsx",
+    "ts",
+    "tsx",
     "md",
     "yml"
   }

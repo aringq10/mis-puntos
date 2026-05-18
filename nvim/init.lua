@@ -15,6 +15,7 @@
   vim.g.have_nerd_font = true
   vim.g.colorscheme    = 'tokyonight-moon'
 
+require("vim._core.ui2").enable({})
 
 require("config.lazy")
 
