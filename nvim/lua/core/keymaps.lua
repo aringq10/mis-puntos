@@ -14,6 +14,7 @@ local map = vim.keymap.set
     vim.wo.linebreak = vim.wo.wrap
   end, { desc = "Toggle wrap" })
   map("n", "<leader>l", "<cmd>Lazy<CR>", { desc = "Open lazy.nvim" })
+  map("n", "<leader>tr", "<cmd>ToggleRelNum<CR>", {})
 
 -- Movement in wrap mode
   map({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { desc = "Down", expr = true, silent = true })
@@ -80,9 +81,3 @@ local map = vim.keymap.set
   map("n", "[w", diagnostic_goto(false, "WARN"), { desc = "Prev Warning" })
   map("n", "]h", diagnostic_goto(true, "HINT"), { desc = "Next Hint" })
   map("n", "[h", diagnostic_goto(false, "HINT"), { desc = "Prev Hint" })
-
--- Treesitter
-  map("n", "<leader>tsp", vim.show_pos, { desc = "Inspect Pos" })
-  -- "a" - toggle display of anonymous nodes, "I" - node source lang,
-  -- "o" - query editor, <Enter> - jump to node, folding also works.
-  map("n", "<leader>tst", function() vim.treesitter.inspect_tree() vim.api.nvim_input("I") end, { desc = "Inspect Tree" })

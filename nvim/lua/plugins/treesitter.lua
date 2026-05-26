@@ -5,6 +5,12 @@ return {
     'nvim-treesitter/nvim-treesitter',
     lazy = false,
     build = ':TSUpdate',
+    keys = {
+      -- "a" - toggle display of anonymous nodes, "I" - node source lang,
+      -- "o" - query editor, <Enter> - jump to node, folding also works.
+      { "<leader>ttp", vim.show_pos, desc = "Inspect Pos" },
+      { "<leader>ttt", function() vim.treesitter.inspect_tree() vim.api.nvim_input("I") end, desc = "Inspect Tree" },
+    },
     config = function()
       require('utils.treesitter').setup()
     end,

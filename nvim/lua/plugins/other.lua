@@ -21,7 +21,7 @@ return {
       spec = {
         { '<leader>s', group = '[S]earch', mode = { 'n', 'v' } },
         { '<leader>t', group = '[T]oggle' },
-        { '<leader>ts', group = '[T]ree[S]itter' },
+        { '<leader>tt', group = '[T]ree[S]itter' },
         { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
         { 'gr', group = 'LSP Actions', mode = { 'n' } },
         { 'gc', group = 'Line (Un)comment', mode = { 'n', 'v' } },

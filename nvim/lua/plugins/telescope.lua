@@ -17,9 +17,10 @@ return {
     config = function()
       -- See `:help telescope` and `:help telescope.setup()`
       require('telescope').setup {
-        extensions = {
-          ['ui-select'] = {
-            require('telescope.themes').get_dropdown(),
+        defaults = require('telescope.themes').get_dropdown {
+          layout_config = {
+            height = 0.4,
+            width = 0.8
           },
         },
       }
