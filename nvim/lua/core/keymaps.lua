@@ -9,7 +9,7 @@ local map = vim.keymap.set
   map('n', '<Esc>', '<cmd>noh<CR>',{ silent = true, desc = "Turn off search highlight" })
   map("n", "o", "o<Esc>", { desc = "Insert line below cursor" })
   map("n", "O", "O<Esc>", { desc = "Insert line above cursor" })
-  map("n", "<leader>r", function ()
+  map("n", "<leader>tw", function ()
     vim.wo.wrap = not vim.wo.wrap
     vim.wo.linebreak = vim.wo.wrap
   end, { desc = "Toggle wrap" })
