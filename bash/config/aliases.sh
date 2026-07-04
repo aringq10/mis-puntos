@@ -14,6 +14,7 @@ alias ip='ip --color=auto'
 
 # alias rm='rm -i'
 alias rm='echo "This is not the command you are looking for."; false'
+alias tp='trash-put'
 alias cp='cp -i'
 alias mv='mv -i'
 alias mkdir='mkdir -p'
