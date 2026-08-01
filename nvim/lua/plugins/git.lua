@@ -54,4 +54,16 @@ return {
       end,
     },
   },
+  { -- Git diff / file history viewer
+    'sindrets/diffview.nvim',
+    dependencies = { 'nvim-lua/plenary.nvim' },
+    keys = {
+      { '<leader>gd', '<cmd>DiffviewOpen<CR>', desc = 'git [d]iff against index' },
+      { '<leader>gD', '<cmd>DiffviewOpen HEAD~1<CR>', desc = 'git [D]iff against last commit' },
+      { '<leader>gs', '<cmd>DiffviewOpen --cached<CR>', desc = 'git diff [s]taged changes' },
+      { '<leader>gr', '<cmd>DiffviewRefresh<CR>', desc = 'git diffview [r]efresh' },
+      { '<leader>gc', '<cmd>DiffviewClose<CR>', desc = 'git diffview [c]lose' },
+    },
+    opts = {}
+  },
 }

@@ -23,6 +23,7 @@ return {
         { '<leader>t', group = '[T]oggle' },
         { '<leader>tt', group = '[T]ree[S]itter' },
         { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
+        { '<leader>g', group = '[G]it Diffview', mode = { 'n', 'v' } },
         { 'gr', group = 'LSP Actions', mode = { 'n' } },
         { 'gc', group = 'Line (Un)comment', mode = { 'n', 'v' } },
         { 'gb', group = 'Block (Un)comment', mode = { 'n', 'v' } },

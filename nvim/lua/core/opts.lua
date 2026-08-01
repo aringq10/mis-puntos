@@ -56,35 +56,30 @@
   }
 
 -- Tabs & indentation
-  -- List of file extensions that look better
+  -- List of filetypes that look better
   -- with 2 space indentation
   local indent_2 = {
-    "lua",
-    "html",
-    "js",
-    "jsx",
-    "ts",
-    "tsx",
-    "md",
-    "yml"
+    "lua", "html", "css", "htmldjango",
+    "javascript", "javascriptreact",
+    "typescript", "typescriptreact",
+    "markdown", "yaml",
   }
 
-  vim.api.nvim_create_autocmd({"BufReadPost", "BufNewFile"}, {
+  vim.api.nvim_create_autocmd("FileType", {
+    callback = function(args)
+      local indent = vim.tbl_contains(indent_2, args.match) and 2 or 4
+      vim.bo.expandtab = true
+      vim.bo.shiftwidth = indent
+      vim.bo.tabstop = indent
+      vim.bo.softtabstop = indent
+    end,
+  })
+
+  vim.api.nvim_create_autocmd("FileType", {
+    pattern = "make",
     callback = function()
-      local filename = vim.api.nvim_buf_get_name(0)
-      local ext = filename:match("^.+%.([^.]+)$")
-
-      vim.o.expandtab = true -- Pressing Tab inserts spaces
-      local indent = 4
-
-      if ext and vim.tbl_contains(indent_2, ext) then
-        indent = 2
-      end
-
-      vim.opt_local.shiftwidth  = indent
-      vim.opt_local.tabstop     = indent
-      vim.opt_local.softtabstop = indent
-    end
+      vim.bo.expandtab = false
+    end,
   })
 
   vim.o.breakindent = true    -- Keep indentation on wrapped lines
