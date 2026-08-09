@@ -27,6 +27,7 @@
   vim.o.splitbelow = true    -- Hsplits open on bottom
 --vim.o.scrolloff  = 10      -- Minimal number of screen lines to keep above and below the cursor.
   vim.o.showmode   = false
+  vim.o.textwidth  = 80
 
 -- Sets how neovim will display certain whitespace characters in the editor.
 -- vim.o.list = true
