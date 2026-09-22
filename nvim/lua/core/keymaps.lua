@@ -40,28 +40,10 @@ local map = vim.keymap.set
   map("n", "<leader>wt", "<C-W>T", { desc = "Move window to new tab", remap = true })
   map("n", "<leader>wd", "<C-W>q", { desc = "Delete window", remap = true })
   map("n", "<leader>wo", "<C-W>o", { desc = "Delete all other windows", remap = true })
-
-  map("n", "t", function()
-    local count = vim.v.count
-    if count > 0 then
-      vim.cmd("tabnext " .. count)
-    else
-      vim.cmd("tabnext")
-    end
-  end, { desc = "Next tab" })
-  map("n", "T", "<cmd>tabprevious<cr>", { desc = "Previous tab" })
   map("n", "<leader><Tab><Tab>", "<cmd>tabnew<cr>", { desc = "New tab" })
   map("n", "<leader><Tab>c", "<cmd>tabclose<cr>", { desc = "Close tab" })
   map("n", "<leader><Tab>o", "<cmd>tabclose<cr>", { desc = "Close all other tabs" })
 
--- Move Lines
-  -- map("n", "<A-j>", "<cmd>execute 'move .+' . v:count1<cr>==", { desc = "Move Line Down" })
-  -- map("n", "<A-k>", "<cmd>execute 'move .-' . (v:count1 + 1)<cr>==", { desc = "Move Line Up" })
-  -- map("i", "<A-j>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move Line Down" })
-  -- map("i", "<A-k>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move Line Up" })
-  -- map("v", "<A-j>", ":<C-u>execute \"'<,'>move '>+\" . v:count1<cr>gv=gv", { desc = "Move Line Down" })
-  -- map("v", "<A-k>", ":<C-u>execute \"'<,'>move '<-\" . (v:count1 + 1)<cr>gv=gv", { desc = "Move Line Up" })
-  --
 -- Diagnostic
   local diagnostic_goto = function(next, severity)
     return function()
