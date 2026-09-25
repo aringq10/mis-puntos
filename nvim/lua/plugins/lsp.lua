@@ -14,7 +14,14 @@ return {
       -- mason - tool downloader
       -- mason-tool-installer - automatically installs passed tools using mason
       -- mason-lspconfig - maps LSP server names between nvim-lspconfig and Mason package names.
-      { 'mason-org/mason.nvim', opts = {} },
+      { 'mason-org/mason.nvim',
+        opts = {
+          registries = { -- for up-to-date C# roslyn lsp
+            "github:mason-org/mason-registry",
+            "github:Crashdummyy/mason-registry",
+          },
+        }
+      },
       'WhoIsSethDaniel/mason-tool-installer.nvim',
       'mason-org/mason-lspconfig.nvim',
 
@@ -69,6 +76,7 @@ return {
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format Lua code
+        'roslyn', -- explicit, since roslyn.nvim enables it separately
       })
 
       require('mason-tool-installer').setup({ ensure_installed = ensure_installed })
