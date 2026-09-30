@@ -1,7 +1,3 @@
-mkcd() {
-    mkdir -p -- "$1" && cd -- "$1" || return
-}
-
 extract() {
     [ -f "$1" ] || { echo "extract: '$1' is not a file" >&2; return 1; }
     case "$1" in
@@ -18,18 +14,8 @@ extract() {
     esac
 }
 
-up() {
-    local n=${1:-1} p=""
-    while [ "$n" -gt 0 ]; do p="../$p"; n=$((n-1)); done
-    cd "$p" || return
-}
-
 ff() { find . -type f -iname "*$1*"; }
 fd() { find . -type d -iname "*$1*"; }
-
-backup() {
-    cp -a -- "$1" "$1.bak.$(date +%Y%m%d-%H%M%S)"
-}
 
 y() {
     local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd

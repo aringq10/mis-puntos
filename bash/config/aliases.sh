@@ -31,7 +31,6 @@ alias gcm='git commit -m'
 alias gp='git pull'
 alias gP='git push'
 
-alias please='sudo $(fc -ln -1)'
 alias path='echo -e "${PATH//:/\\n}"'
 alias ports='ss -tulnp'
 alias reload='. ~/.bashrc'

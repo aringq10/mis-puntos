@@ -1,6 +1,8 @@
 [ -z "$PS1" ] && return
 
-for f in "$HOME"/.config/bash/*.sh; do
+BASH_CONFIG_DIR="$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")/config"
+
+for f in "$BASH_CONFIG_DIR"/*.sh; do
     [ -r "$f" ] && . "$f"
 done
 unset f

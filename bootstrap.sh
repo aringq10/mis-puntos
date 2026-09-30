@@ -2,6 +2,13 @@
 
 set -e
 
+cd "$(dirname "$(realpath "${BASH_SOURCE[0]}")")"
+
+confirm() {
+    read -rp "$1 [y/N] " answer
+    [[ "$answer" =~ ^[Yy]$ ]]
+}
+
 safe_symlink() {
     local target
     target=$(realpath "$1")
@@ -39,11 +46,19 @@ safe_symlink() {
     fi
 }
 
-echo "--- Bootstrapping Neovim ---"
-safe_symlink ./nvim ~/.config/nvim
+if confirm "Bootstrap Neovim?"; then
+    safe_symlink ./nvim ~/.config/nvim
+fi
 
-echo "--- Bootstrapping Yazi   ---"
-safe_symlink ./yazi ~/.config/yazi
+if confirm "Bootstrap Yazi?"; then
+    safe_symlink ./yazi ~/.config/yazi
+fi
 
-echo "--- Bootstrapping Kitty  ---"
-safe_symlink ./kitty ~/.config/kitty
+if confirm "Bootstrap Kitty?"; then
+    safe_symlink ./kitty ~/.config/kitty
+fi
+
+if confirm "Bootstrap Bash?"; then
+    safe_symlink ./bash/.bashrc ~/.bashrc
+    safe_symlink ./bash/.bash_profile ~/.bash_profile
+fi
