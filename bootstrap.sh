@@ -41,3 +41,6 @@ safe_symlink() {
 
 echo "--- Bootstrapping Neovim ---"
 safe_symlink ./nvim ~/.config/nvim
+
+echo "--- Bootstrapping Yazi   ---"
+safe_symlink ./yazi ~/.config/yazi

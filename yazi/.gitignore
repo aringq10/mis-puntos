@@ -1,0 +1,8 @@
+*
+
+!.gitignore
+!init.lua
+!keymap.toml
+!package.toml
+!theme.toml
+!yazi.toml

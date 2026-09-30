@@ -1,0 +1,6 @@
+[flavor]
+dark  = "catppuccin-macchiato"
+light = "catppuccin-macchiato"
+
+[which]
+cols = 2
