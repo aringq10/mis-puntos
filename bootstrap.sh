@@ -44,3 +44,6 @@ safe_symlink ./nvim ~/.config/nvim
 
 echo "--- Bootstrapping Yazi   ---"
 safe_symlink ./yazi ~/.config/yazi
+
+echo "--- Bootstrapping Kitty  ---"
+safe_symlink ./kitty ~/.config/kitty

@@ -1,11 +1,8 @@
-new_tab NEWS
-launch --cwd=~/code/news-app/
+new_tab CODE
+launch --cwd=~/code/
 
-new_tab LOCSHARE
-launch --cwd=~/.local/share/
+new_tab SYNC
+launch --cwd=~/Sync/
 
 new_tab DOTS
 launch --cwd=~/.dots/
-
-new_tab BTOP
-launch btop
