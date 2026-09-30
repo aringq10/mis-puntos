@@ -21,6 +21,7 @@
   vim.o.showcmd    = true    -- Show command in bottom right
   vim.o.wrap       = false
   vim.o.signcolumn = 'yes'   -- The column left of line numbers
+  vim.o.foldcolumn = '0'
   vim.o.updatetime = 250     -- Decrease swap file update time
   vim.o.timeoutlen = 300     -- Decrease mapped sequence wait time
   vim.o.splitright = true    -- Vsplits open on right
