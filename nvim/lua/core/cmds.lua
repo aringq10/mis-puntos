@@ -9,10 +9,6 @@ vim.api.nvim_create_user_command("HiStatus", function()
     print(string.format('treesitter: %s, regex syntax: %s', ts_on, syn_on))
 end, { desc = "Print whether TS or regex syntax highlighting is on" })
 
-vim.api.nvim_create_user_command("ToggleRelNum", function()
-    vim.o.relativenumber = not vim.o.relativenumber
-end, { desc = "Toggle relativenumber" })
-
 vim.api.nvim_create_user_command('PrintRtp', function()
     for _, p in ipairs(vim.opt.runtimepath:get()) do print(p) end
 end, { desc = "Print runtimepath entries" })

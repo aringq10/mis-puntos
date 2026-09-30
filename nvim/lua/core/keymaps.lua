@@ -14,7 +14,7 @@ local map = vim.keymap.set
     vim.wo.linebreak = vim.wo.wrap
   end, { desc = "Toggle wrap" })
   map("n", "<leader>l", "<cmd>Lazy<CR>", { desc = "Open lazy.nvim" })
-  map("n", "<leader>tr", "<cmd>ToggleRelNum<CR>", {})
+  map("n", "<leader>tr", function() vim.o.relativenumber = not vim.o.relativenumber end, { desc = "Toggle relative nums" })
 
 -- Movement in wrap mode
   map({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { desc = "Down", expr = true, silent = true })
@@ -22,7 +22,16 @@ local map = vim.keymap.set
   map({ "n", "x" }, "0", function() return vim.wo.wrap and (vim.v.count == 0 and 'g0' or '0') or '0' end, { desc = "Start", expr = true, silent = true })
   map({ "n", "x" }, "$", function() return vim.wo.wrap and (vim.v.count == 0 and 'g$' or '$') or '$' end, { desc = "End", expr = true, silent = true })
 
--- Window and Tab navigation
+-- Windows
+  map("n", "<leader>wx", "<C-W>s", { desc = "Split window horizontally", remap = true })
+  map("n", "<leader>wv", "<C-W>v", { desc = "Split window vertically", remap = true })
+  map("n", "<leader>wc", "<C-W>q", { desc = "Close window", remap = true })
+  map("n", "<leader>wo", "<C-W>o", { desc = "Close all other windows", remap = true })
+  map("n", "<leader>wh", "<C-W>H", { desc = "Move window left", remap = true })
+  map("n", "<leader>wj", "<C-W>J", { desc = "Move window down", remap = true })
+  map("n", "<leader>wk", "<C-W>K", { desc = "Move window up", remap = true })
+  map("n", "<leader>wl", "<C-W>L", { desc = "Move window right", remap = true })
+  map("n", "<leader>wt", "<C-W>T", { desc = "Move window to new tab", remap = true })
   map("n", "<C-h>", "<C-w>h", { desc = "Go to left window", remap = true })
   map("n", "<C-j>", "<C-w>j", { desc = "Go to lower window", remap = true })
   map("n", "<C-k>", "<C-w>k", { desc = "Go to upper window", remap = true })
@@ -31,18 +40,26 @@ local map = vim.keymap.set
   map("n", "<C-Down>", "<cmd>resize -2<cr>", { desc = "Decrease window height" })
   map("n", "<C-Left>", "<cmd>vertical resize -2<cr>", { desc = "Decrease window width" })
   map("n", "<C-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increase window width" })
-  map("n", "<leader>wh", "<C-w>H", { desc = "Move window left", remap = true })
-  map("n", "<leader>wj", "<C-w>J", { desc = "Move window down", remap = true })
-  map("n", "<leader>wk", "<C-w>K", { desc = "Move window up", remap = true })
-  map("n", "<leader>wl", "<C-w>L", { desc = "Move window right", remap = true })
-  map("n", "<leader>ws", "<C-W>s", { desc = "Split window horizontally", remap = true })
-  map("n", "<leader>wv", "<C-W>v", { desc = "Split window vertically", remap = true })
-  map("n", "<leader>wt", "<C-W>T", { desc = "Move window to new tab", remap = true })
-  map("n", "<leader>wd", "<C-W>q", { desc = "Delete window", remap = true })
-  map("n", "<leader>wo", "<C-W>o", { desc = "Delete all other windows", remap = true })
-  map("n", "<leader><Tab><Tab>", "<cmd>tabnew<cr>", { desc = "New tab" })
+
+-- Tabs
+  map("n", "<leader><Tab>n", "<cmd>tabnew<cr>", { desc = "New tab" })
   map("n", "<leader><Tab>c", "<cmd>tabclose<cr>", { desc = "Close tab" })
-  map("n", "<leader><Tab>o", "<cmd>tabclose<cr>", { desc = "Close all other tabs" })
+  map("n", "<leader><Tab>o", "<cmd>tabonly<cr>", { desc = "Close all other tabs" })
+  local function tab_move(dir)
+    local cur = vim.fn.tabpagenr()
+    local last = vim.fn.tabpagenr("$")
+    if last == 1 then return end
+
+    if dir > 0 then
+      vim.cmd(cur == last and "tabmove 0" or "tabmove +1")
+    else
+      vim.cmd(cur == 1 and "tabmove $" or "tabmove -1")
+    end
+  end
+  map("n", "<leader><Tab>.", function() tab_move(1) end, { desc = "Move tab right" })
+  map("n", "<leader><Tab>,", function() tab_move(-1) end, { desc = "Move tab left" })
+  map("n", "<C-m>", "gt", { desc = "Go to right tab" })
+  map("n", "<C-n>", "gT", { desc = "Go to left tab" })
 
 -- Diagnostic
   local diagnostic_goto = function(next, severity)
