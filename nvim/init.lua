@@ -13,7 +13,7 @@
   vim.g.mapleader      = '\\'
   vim.g.maplocalleader = '\\'
   vim.g.have_nerd_font = true
-  vim.g.colorscheme    = 'horizon'
+  vim.g.colorscheme    = 'tokyonight-moon'
 
 require("vim._core.ui2").enable({})
 
@@ -26,3 +26,5 @@ require("core.opts")
 require("core.autocmds")
 
 require("core.cmds")
+
+require("core.highlight")

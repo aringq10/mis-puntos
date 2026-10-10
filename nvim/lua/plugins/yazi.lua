@@ -19,22 +19,23 @@ return {
       open_multiple_tabs = true,
       highlight_hovered_buffers_in_same_directory = false,
       floating_window_scaling_factor = 0.7,
-      keymaps = {
-        show_help = "<f1>",
-      },
+      open_file_function = function(chosen_file, config, state)
+        local ext = vim.fn.fnamemodify(chosen_file, ":e"):lower()
+
+        local external = {
+          pdf = true, epub = true, djvu = true,
+          mp4 = true, mkv = true, webm = true, mov = true, avi = true,
+          mp3 = true, flac = true, ogg = true,
+          png = true, jpg = true, jpeg = true, gif = true, webp = true,
+          docx = true, xlsx = true, pptx = true,
+        }
+
+        if external[ext] then
+          vim.ui.open(chosen_file)   -- xdg-open / open / start, depending on your OS
+        else
+          vim.cmd("edit " .. vim.fn.fnameescape(chosen_file))
+        end
+      end,
     },
-    config = function(_, opts)
-      require("yazi").setup(opts)
-
-      local function yazi_border_bg_none()
-        local border = vim.api.nvim_get_hl(0, { name = "FloatBorder", link = false })
-        vim.api.nvim_set_hl(0, "YaziFloatBorder", { fg = border.fg, bg = "NONE" })
-      end
-
-      yazi_border_bg_none()
-      vim.api.nvim_create_autocmd("ColorScheme", {
-        callback = function() vim.schedule(yazi_border_bg_none) end,
-      })
-    end,
   },
 }

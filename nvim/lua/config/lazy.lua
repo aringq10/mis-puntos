@@ -20,4 +20,15 @@ require("lazy").setup({
   },
   -- automatically check for plugin updates
   checker = { enabled = true, notify = false },
+  ui = {
+    size = { width = 0.7, height = 0.7 },
+    border = "rounded",
+    backdrop = 100,
+  },
+  performance = {
+    rtp = {
+      disabled_plugins = {
+      }
+    }
+  }
 })
