@@ -9,8 +9,8 @@ local function set_transparent_floats()
   -- lazy maps Normal -> LazyNormal in its window, so it needs its own entry
   vim.api.nvim_set_hl(0, "LazyNormal", { fg = normal.fg, bg = "NONE", ctermbg = "NONE" })
 
-  -- yazi border follows FloatBorder
   vim.api.nvim_set_hl(0, "YaziFloatBorder", { link = "FloatBorder" })
+  vim.api.nvim_set_hl(0, "WhichKeyNormal", { link = "NormalFloat" })
 end
 
 local function set_custom_hl()

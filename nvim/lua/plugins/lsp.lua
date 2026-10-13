@@ -1,12 +1,3 @@
--- https://github.com/neovim/nvim-lspconfig
-
--- nvim-lspconfig is a collection of default configs(nvim-lspconfig/lsp/) for
--- different language servers. Besides that it offers a framework for enabling
--- LSs with the default config + user passed config. Though this framework has
--- been replaced with vim.lsp.config() + vim.lsp.enable() (see :help lspconfig-nvim-0.11),
--- therefore nvim-lspconfig offers default configs and commands like
--- LspInfo, LspStart etc. (nvim-lspconfig/plugin/lspconfig.lua)
-
 return {
   { -- Main LSP Configuration
     'neovim/nvim-lspconfig',

@@ -13,8 +13,8 @@ local map = vim.keymap.set
     vim.wo.wrap = not vim.wo.wrap
     vim.wo.linebreak = vim.wo.wrap
   end, { desc = "Toggle wrap" })
-  map("n", "<leader>l", "<cmd>Lazy<CR>", { desc = "Open lazy.nvim" })
   map("n", "<leader>tr", function() vim.o.relativenumber = not vim.o.relativenumber end, { desc = "Toggle relative nums" })
+  map("n", "<leader>l", "<cmd>Lazy<CR>", { desc = "Open lazy.nvim" })
 
 -- Movement in wrap mode
   map({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { desc = "Down", expr = true, silent = true })

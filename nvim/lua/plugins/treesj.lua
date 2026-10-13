@@ -1,12 +1,10 @@
 return {
   'Wansmer/treesj',
-  dependencies = { 'nvim-treesitter/nvim-treesitter' }, -- if you install parsers with `nvim-treesitter`
+  dependencies = { 'nvim-treesitter/nvim-treesitter' },
   keys = {
-    { "<leader>ts", function() require('treesj').toggle() end, desc = "TreeSJ Toggle" },
+    { '<space>m', function() require('treesj').toggle() end, desc = "Split/Join via autodetect" },
+    { '<space>j', function() require('treesj').join() end,   desc = "Join" },
+    { '<space>s', function() require('treesj').split() end,  desc = "Split" },
   },
-  config = function()
-    require('treesj').setup({
-      use_default_keymaps = false,
-    })
-  end,
+  opts = { use_default_keymaps = false },
 }

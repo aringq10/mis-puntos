@@ -7,8 +7,6 @@ return {
       vim.o.foldlevel = 99
       vim.o.foldlevelstart = 99
       vim.o.foldenable = true
-      vim.o.foldcolumn = "1"  -- shows fold indicators in sign column, "0" to disable
-      vim.o.fillchars = 'eob: ,fold: ,foldopen:,foldsep: ,foldclose:'
     end,
     opts = {
       provider_selector = function(bufnr, filetype, buftype)
@@ -48,7 +46,6 @@ return {
       { "zM", function() require("ufo").closeAllFolds() end, desc = "Close all folds" },
       { "zr", function() require("ufo").openFoldsExceptKinds() end, desc = "Open folds except kinds" },
       { "zm", function() require("ufo").closeFoldsWith() end, desc = "Close folds with" },
-      -- { "<CR>", "za", desc = "Toggle fold" },
     },
   },
 }
