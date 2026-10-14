@@ -1,16 +1,5 @@
 return {
   {
-    'MeanderingProgrammer/render-markdown.nvim',
-    dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-mini/mini.nvim' },
-    opts = {
-      completions = { lsp = { enabled = true } },
-    },
-    keys = {
-      { "<leader>mt", "<cmd>RenderMarkdown toggle<CR>", desc = "Toggle RenderMarkdown" },
-      { "<leader>mp", "<cmd>RenderMarkdown preview<CR>", desc = "Preview RenderMarkdown" },
-    },
-  },
-  {
     "folke/which-key.nvim",
     event = "VeryLazy",
     opts = {
@@ -24,7 +13,6 @@ return {
         { '<leader>u', group = '[T]ree[S]itter' },
         { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
         { '<leader>g', group = '[G]it Diffview', mode = { 'n', 'v' } },
-        { '<leader>m', group = '[M]arkdown', mode = { 'n', 'v' }},
         { '<leader>w', group = '[W]indow Actions', mode = { 'n' } },
         { '<leader><Tab>', group = 'Tab Actions', mode = { 'n' } },
         { '<leader>k', group = 'Which [K]ey', mode = { 'n' } },
