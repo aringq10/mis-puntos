@@ -6,10 +6,10 @@ __prompt_exit() {
 }
 
 C_ERR='\[\e[31m\]'
-TC="243"
-UC="45"
-HC="45"
-PC="220"
+TC="243" # text
+UC="45"  # user
+HC="45"  # host
+PC="220" # path
 RS="\[\e[m\]"
 TC="\[\e[38;5;${TC}m\]"
 UC="\[\e[38;5;${UC}m\]"
