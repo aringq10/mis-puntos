@@ -64,7 +64,7 @@
     "lua", "html", "css", "htmldjango",
     "javascript", "javascriptreact",
     "typescript", "typescriptreact",
-    "markdown", "yaml",
+    "markdown", "yaml", "json"
   }
 
   vim.api.nvim_create_autocmd("FileType", {
